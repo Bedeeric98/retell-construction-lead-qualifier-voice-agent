@@ -1,0 +1,68 @@
+{
+  "agent_name": "Drywall Single-Prompt Agent",
+  "engine": "retell-llm",
+  "voice": {
+    "voice_id": "11labs-Cimo"
+  },
+  "language": "en-US",
+  "conversation_settings": {
+    "interruption_sensitivity": 0.9,
+    "max_call_duration_ms": 3600000
+  },
+  "post_call_analysis_data": [
+    {
+      "name": "project_type",
+      "description": "This is the specific project type the caller wants us to execute for them.",
+      "type": "enum",
+      "choices": [
+        "Single Family Homes",
+        "Multi-family Homes"
+      ]
+    },
+    {
+      "type": "number",
+      "name": "unit_amount",
+      "description": "This is the number of units of homes the caller wants to build"
+    },
+    {
+      "type": "string",
+      "name": "project_location",
+      "description": "This is the state where the user wants us to execute their project"
+    },
+    {
+      "type": "string",
+      "name": "project_location_city",
+      "description": "This is the specific city in the mentioned state where the caller wants us to execute their project"
+    },
+    {
+      "type": "string",
+      "name": "name",
+      "description": "This is the name of the caller."
+    },
+    {
+      "type": "string",
+      "name": "email",
+      "description": "This is the email address of the caller"
+    },
+    {
+      "type": "string",
+      "name": "company_name",
+      "description": "This is the company name of the caller."
+    }
+  ],
+  "llm": {
+    "model": "gpt-4.1",
+    "model_temperature": null,
+    "tool_call_strict_mode": null,
+    "begin_message": "Thank you for calling Example Drywall Co., this is Sarah. How can I help you today?",
+    "default_dynamic_variables": [],
+    "tools": [
+      {
+        "type": "end_call",
+        "name": "end_call",
+        "description": "End the call when user has to leave (like says bye) or you are instructed to do so."
+      }
+    ]
+  },
+  "webhook": "https://your-n8n-instance.example.com/webhook/YOUR_WEBHOOK_PATH"
+}
